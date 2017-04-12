@@ -46,6 +46,18 @@ The install all the gems:
 bundle install
 ```
 
+Ensure that the files in the `bin` directory have the right permissions:
+
+```bash
+chmod +x bin/*
+```
+
+Run any pending migrations:
+
+```bash
+bin/rake db:migrate RAILS_ENV=development
+```
+
 Set up the initial database structure and content:
 
 ```bash
@@ -62,6 +74,14 @@ The application should be available at [localhost:3000](http://localhost:3000) n
 
 
 ### To run the tests
+
+Run any pending migrations:
+
+```bash
+bin/rake db:migrate RAILS_ENV=test
+```
+
+Then run the tests:
 
 ```bash
 bundle exec rspec
