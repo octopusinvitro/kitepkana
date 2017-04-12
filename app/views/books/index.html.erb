@@ -1,0 +1,11 @@
+<h1>Books</h1>
+
+<% if Book.any? %>
+  <ul>
+  <% Book.all.each do |book| %>
+    <li><%= book.title %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No books have been added yet.</p>
+<% end %>
