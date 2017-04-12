@@ -14,5 +14,8 @@
  *= require_self
  *= normalize
  *= layout
+ *= flashes
+ *= books/clearfix
  *= books/index
+ *= books/new
  */

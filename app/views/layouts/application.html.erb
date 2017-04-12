@@ -18,6 +18,18 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
+        <% if flash.any? %>
+          <ul class="flashes">
+            <% flash.alert.try(:each) do |alert| %>
+              <li class="alert"><%= alert %></li>
+            <% end %>
+
+            <% if flash.notice %>
+              <li class="notice"><%= flash.notice %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
         <%= yield %>
 
         <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
