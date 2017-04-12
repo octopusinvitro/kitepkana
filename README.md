@@ -4,12 +4,7 @@
 
 # Readme
 
-Update badges with your user and repo names.
-
-Update travis by turning your project repo ON.
-
-Explain your project here.
-
+This is a Rails app to manage my digital books. I may add my paper books as well.
 
 ## How to use this project
 
@@ -20,58 +15,64 @@ For example, if you are using [rbenv](https://cbednarski.com/articles/installing
 
 1. Install the right Ruby version:
 ```bash
-$ rbenv install < VERSION >
-$ rbenv rehash
+rbenv install < VERSION >
+rbenv rehash
 ```
 1. Move to the root directory of this project and type:
 ```bash
-$ rbenv local < VERSION >
-$ ruby -v
+rbenv local < VERSION >
+ruby -v
 ```
 
 You will also need to install the `bundler` gem, which will allow you to install the rest of the dependencies listed in the `Gemfile` file of this project.
 
 ```bash
-$ gem install bundler
-$ rbenv rehash
+gem install bundler
+rbenv rehash
 ```
-
-
-### Folder structure
-
-* `bin `: Executables
-* `lib `: Sources
-* `spec`: Tests
 
 
 ### To initialise the project
 
+This project uses Sqlite. Be sure you have it installed in your system before installing the gems. If you don't, type:
+
 ```bash
-$ bundle install
-$ bundle exec rake
+sudo apt-get install sqlite3 libsqlite3-dev
 ```
+
+The install all the gems:
+
+```bash
+bundle install
+```
+
+Set up the initial database structure and content:
+
+```bash
+bundle exec rake db:setup
+```
+
+Once that's done, start up the application:
+
+```bash
+bundle exec rails s
+```
+
+The application should be available at [localhost:3000](http://localhost:3000) now.
 
 
 ### To run the tests
 
 ```bash
-$ bundle exec rspec --color
+bundle exec rspec
 ```
 
 
-### To run the app
+### Environment Components
 
-Make sure that the `bin/app` file has execution permissions:
-
-```bash
-$ chmod +x bin/app
-```
-
-Then just type:
-
-```bash
-$ bin/app
-```
+- Ruby 2.3.1
+- Rails 4.2.1
+- SQLite
 
 
 ## License
