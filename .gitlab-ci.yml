@@ -4,6 +4,7 @@ before_script:
   - sudo apt-get install sqlite3 libsqlite3-dev
   - gem install bundler --no-ri --no-rdoc
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+  - bin/rake db:migrate RAILS_ENV=test
 
 rspec:
   script:
