@@ -1,5 +1,9 @@
 <h1>Books</h1>
 
+<nav>
+  <%= link_to "Add new book", new_book_path %>
+</nav>
+
 <% if Book.any? %>
   <ul>
   <% Book.all.each do |book| %>

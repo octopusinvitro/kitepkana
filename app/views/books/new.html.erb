@@ -1,0 +1,17 @@
+<h2>Add new book</h2>
+
+<%= form_for(@book, url: create_book_path) do |form| %>
+  <p class="form-pair">
+  <%= form.text_field(:title) %>
+  <%= form.label(:title) %>
+  </p>
+
+  <p class="form-pair">
+  <%= form.text_field(:filename) %>
+  <%= form.label(:filename) %>
+  </p>
+
+  <%= form.submit %>
+<% end %>
+
+<p><a href="/">Go home</a></p>
