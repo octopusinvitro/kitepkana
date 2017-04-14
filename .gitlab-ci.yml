@@ -6,6 +6,9 @@ before_script:
   - which ruby
   - gem install bundler --no-ri --no-rdoc
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+  - ls -al bin
+  - chmod +x bin/*
+  - ls -al bin
   - ./bin/rake db:migrate RAILS_ENV=test
 
 rspec:

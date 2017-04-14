@@ -2,5 +2,8 @@ language: ruby
 install:
 - sudo apt-get install sqlite3 libsqlite3-dev
 - bundle install
+- ls -al bin
+- chmod +x bin/*
+- ls -al bin
 - ./bin/rake db:migrate RAILS_ENV=test
 script: bundle exec rspec
