@@ -1,133 +1,73 @@
 form {
   margin-top: 2em;
-
-  input {
-    box-sizing: border-box;
-    display: block;
-    margin-bottom: .7em;
-    padding: 1em;
-    width: 100%;
-    background-color: transparent;
-    color: #595F6E;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 1em;
-    text-align: center;
-    border: 0;
-    -webkit-appearance: none;
-    border-bottom: 1px solid #B9C1CA;
-  }
-
-  input[type=submit] {
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    background-color: #8e44ad;
-    color: #edf1f2;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-  }
-
-  input[type=submit]:hover {
-    cursor: pointer;
-  }
-
-  label {
-    display: inline-block;
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%;
-    height: calc(100% - 1em);
-    padding: 0;
-    color: #6a7989;
-    font-weight: 300;
-    font-size: 70.25%;
-    text-align: left;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    pointer-events: none;
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 10px);
-    }
-
-    &::after {
-      border-bottom: 4px solid #3a3f51;
-      -webkit-transform: translate3d(-100%, 0, 0);
-              transform: translate3d(-100%, 0, 0);
-      -webkit-transition: -webkit-transform 0.3s;
-              transition:         transform 0.3s;
-    }
-  }
-
-  input:focus + label {
-    -webkit-animation: anim-1 0.3s forwards;
-            animation: anim-1 0.3s forwards;
-  }
-
-  input:focus + label::after {
-    -webkit-transform: translate3d(0, 40%, 0);
-            transform: translate3d(0, 40%, 0);
-  }
-
-  input:focus {
-    border-bottom: none;
-    -webkit-transition: border 0.3s;
-            transition: border 0.3s;
-  }
 }
 
 .form-pair {
   position: relative;
   overflow: hidden;
+}
+
+.form-text {
+  box-sizing: border-box;
+  display: block;
+  padding: 2em 0;
+  width: 100%;
+  background-color: transparent;
+  color: #595F6E;
+  text-align: center;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.form-label {
+  position: absolute;
+  bottom: 0; left: 0;
+  padding: 0;
+  width: 100%;
+  height: calc(100% - 1em);
+  color: #6a7989;
+  font-weight: 300;
+  font-size: 70.25%;
   text-transform: uppercase;
   letter-spacing: .2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 10px);
+    -webkit-transition: -webkit-transform .3s, border-bottom .3s;
+            transition:         transform .3s, border-bottom .3s;
+  }
+
+  &::before {
+    border-bottom: 1px solid #B9C1CA;
+  }
+
+  &::after {
+    border-bottom: 4px solid #3a3f51;
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+  }
 }
 
-@-webkit-keyframes anim-1 {
-  50% {
-    opacity: 0;
-    -webkit-transform: translate3d(1em, 0, 0);
-            transform: translate3d(1em, 0, 0);
-  }
-  51% {
-    opacity: 0;
-    -webkit-transform: translate3d(-1em, -40%, 0);
-            transform: translate3d(-1em, -40%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, -40%, 0);
-            transform: translate3d(0, -40%, 0);
-  }
+.form-text:focus + .form-label::before {
+  border-bottom: none;
 }
 
-@keyframes anim-1 {
-  50% {
-    opacity: 0;
-    -webkit-transform: translate3d(1em, 0, 0);
-            transform: translate3d(1em, 0, 0);
-  }
-  51% {
-    opacity: 0;
-    -webkit-transform: translate3d(-1em, -40%, 0);
-            transform: translate3d(-1em, -40%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, -40%, 0);
-            transform: translate3d(0, -40%, 0);
-  }
+.form-text:focus + .form-label::after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }

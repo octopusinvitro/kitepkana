@@ -1,0 +1,33 @@
+%button {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .2em;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #3a3f51;
+    color: #edf1f2;
+  }
+}
+
+.button-main {
+  @extend %button;
+  background-color: #8e44ad;
+  color: #edf1f2;
+}
+
+.button-main-index {
+  @extend .button-main;
+  margin-right: 0;
+}
+
+.button-secondary {
+  @extend %button;
+  background-color: #E4E4E4;
+  color: #8E8E8E;
+}
