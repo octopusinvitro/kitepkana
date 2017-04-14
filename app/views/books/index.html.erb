@@ -1,13 +1,14 @@
-<h1>Books</h1>
-
-<nav>
-  <%= link_to "Add new book", new_book_path %>
-</nav>
+<div class="main-navigation">
+  <%= link_to "Add new book", new_book_path, class: "button-main-index" %>
+</div>
 
 <% if Book.any? %>
-  <ul>
+  <ul class="main-list">
   <% Book.all.each do |book| %>
-    <li><%= book.title %></li>
+    <li>
+      <h2><%= book.title %></h2>
+      <%= link_to "Edit Book", edit_book_path(book.id), class: "button-secondary" %>
+    </li>
   <% end %>
   </ul>
 <% else %>
