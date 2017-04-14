@@ -1,7 +1,16 @@
-ul.flashes {
+.flashes {
+  margin: 0 0 2em;
+  padding: 0;
+
+  li {
+    padding: 1.5em;
+    list-style-type: none;
+    text-align: center;
+  }
+
   .alert {
-    border-color: #f05050;
-    background-color: #faa0a0;
+    background-color: #e74c3c;
+    color: #ecf0f1;
   }
 
   .notice {

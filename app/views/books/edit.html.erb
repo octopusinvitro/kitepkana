@@ -1,6 +1,6 @@
-<h2>Add new book</h2>
+<h2>Edit Book</h2>
 
-<%= form_for(@book, url: create_book_path) do |form| %>
+<%= form_for(@book, url: update_book_path) do |form| %>
   <p class="form-pair">
     <%= form.text_field(:title, class: "form-text") %>
     <%= form.label(:title, class: "form-label") %>
@@ -11,5 +11,5 @@
     <%= form.label(:filename, class: "form-label") %>
   </p>
 
-  <%= form.submit "Create book", class: "button-main" %>
+  <%= form.submit "Update book", class: "button-main" %>
 <% end %>
