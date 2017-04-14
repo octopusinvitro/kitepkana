@@ -9,12 +9,12 @@
   }
 
   .alert {
-    background-color: #e74c3c;
-    color: #ecf0f1;
+    background-color: $alert-color;
+    color: $light-color;
   }
 
   .notice {
-    border-color: #27c24c;
-    background-color: #c6efd0;
+    background-color: $secondary-color;
+    color: $title-color;
   }
 }

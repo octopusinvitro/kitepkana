@@ -1,13 +1,14 @@
-<div class="main-navigation">
-  <%= link_to "Add new book", new_book_path, class: "button-main-index" %>
-</div>
+
+  <div class="main-navigation">
+    <%= link_to "Add new book", new_book_path, class: "button-main-index" %>
+  </div>
 
 <% if Book.any? %>
   <ul class="main-list">
   <% Book.all.each do |book| %>
     <li>
-      <h2><%= book.title %></h2>
-      <%= link_to "Edit Book", edit_book_path(book.id), class: "button-secondary" %>
+      <h2><%= link_to(book.title, show_book_path(book.id)) %></h2>
+      <%= link_to("Edit Book", edit_book_path(book.id), class: "button-secondary") %>
     </li>
   <% end %>
   </ul>

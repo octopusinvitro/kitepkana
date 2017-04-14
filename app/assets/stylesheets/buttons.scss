@@ -7,18 +7,22 @@
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: .2em;
+  border: 0;
+  transition: background-color .3s, color .3s;
 
   &:hover {
     cursor: pointer;
-    background-color: #3a3f51;
-    color: #edf1f2;
   }
 }
 
 .button-main {
   @extend %button;
-  background-color: #8e44ad;
-  color: #edf1f2;
+  background-color: $title-color;
+  color: $light-color;
+
+  &:hover {
+    background-color: $dark-color;
+  }
 }
 
 .button-main-index {
@@ -28,6 +32,11 @@
 
 .button-secondary {
   @extend %button;
-  background-color: #E4E4E4;
-  color: #8E8E8E;
+  background-color: $secondary-color;
+  color: $dark-color;
+
+  &:hover {
+    background-color: $secondary-color-darker;
+    color: $light-color;
+  }
 }

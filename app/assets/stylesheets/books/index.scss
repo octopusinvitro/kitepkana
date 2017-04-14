@@ -5,8 +5,9 @@
 }
 
 .main-title {
-  color: #16a085;
+  color: $dark-color;
   text-decoration: none;
+  font-weight: 800;
 }
 
 .main-navigation {
@@ -23,14 +24,20 @@
     list-style-type: none;
     margin: 1.5em 0;
     padding: 0;
-    background-color: #ffffff;
-    border: 1px solid #e7ecee;
+    background-color: $light-color;
   }
 
   h2 {
     @extend %center-vertically;
     margin: 1.5em;
-    font-weight: 300;
+    font-size: 1.1em;
+    font-weight: 500;
+
+    a {
+      color: $success-color-darker;
+      text-decoration: none;
+      border-bottom: .15em solid $success-color-darker;
+    }
   }
 
   .button-secondary {
