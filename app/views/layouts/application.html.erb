@@ -10,6 +10,7 @@
         <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
         <!-- Place favicon.ico in the root directory -->
 
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,500i,800" rel="stylesheet">
         <%= stylesheet_link_tag 'application', media: 'all' %>
         <%= csrf_meta_tags %>
     </head>
@@ -32,7 +33,6 @@
 
         <div class="main-content">
           <h1><%= link_to "Kitepkana", root_path, class: "main-title" %></h1>
-
           <%= yield %>
         </div>
 
