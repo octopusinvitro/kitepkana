@@ -1,13 +1,15 @@
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: .9em;
-  background-color: #edf1f2;
-  color: #374045;
+  font-weight: 400;
+  background-color: $site-bg-color;
+  color: $site-text-color;
 }
 
 h1, h2, h3 {
-  color: #16a085;
+  color: $title-color;
+  font-weight: 500;
 }
 
 /* Small screens (default) */

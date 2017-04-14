@@ -94,9 +94,7 @@ RSpec.describe BooksController do
       update_book(id: book.id,
                   title: "updated title",
                   filename: "updated-filename.pdf")
-
       book.reload
-
       expect(book.title).to eq("updated title")
       expect(book.filename).to eq("updated-filename.pdf")
     end
@@ -106,9 +104,7 @@ RSpec.describe BooksController do
       update_book(id: book.id,
                   title: nil,
                   filename: "irrelevant")
-
       book.reload
-
       expect(book.title).to eq(old_title)
     end
 
@@ -120,6 +116,15 @@ RSpec.describe BooksController do
     it "contains an error message for invalid books" do
       update_book(id: book.id, title: "")
       expect(flash.now[:alert].first).to include("Title")
+    end
+  end
+
+  describe "#show" do
+    let(:book) {Book.create!(title: "title", filename: "filename.pdf")}
+
+    it "renders the show template" do
+      get :show, id: book.id
+      expect(response).to render_template("show")
     end
   end
 end

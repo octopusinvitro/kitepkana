@@ -1,9 +1,10 @@
+
 <h2>Edit Book</h2>
 
 <%= form_for(@book, url: update_book_path) do |form| %>
   <p class="form-pair">
-    <%= form.text_field(:title, class: "form-text") %>
-    <%= form.label(:title, class: "form-label") %>
+    <%= form.text_field(:title, class: "form-text", required: true) %>
+    <%= form.label(:title, "Title (required)", class: "form-label") %>
   </p>
 
   <p class="form-pair">
