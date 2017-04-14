@@ -13,7 +13,8 @@ form {
   padding: 2em 0;
   width: 100%;
   background-color: transparent;
-  color: #595F6E;
+  color: $dark-color;
+  font-weight: 800;
   text-align: center;
   border: 0;
   -webkit-appearance: none;
@@ -25,7 +26,7 @@ form {
   padding: 0;
   width: 100%;
   height: calc(100% - 1em);
-  color: #6a7989;
+  color: $dark-color;
   font-weight: 300;
   font-size: 70.25%;
   text-transform: uppercase;
@@ -53,14 +54,18 @@ form {
   }
 
   &::before {
-    border-bottom: 1px solid #B9C1CA;
+    border-bottom: 1px solid $dark-color;
   }
 
   &::after {
-    border-bottom: 4px solid #3a3f51;
+    border-bottom: 4px solid $light-color;
     -webkit-transform: translate3d(-100%, 0, 0);
             transform: translate3d(-100%, 0, 0);
   }
+}
+
+.form-text:focus + .form-label {
+  color: $light-color;
 }
 
 .form-text:focus + .form-label::before {
@@ -70,4 +75,9 @@ form {
 .form-text:focus + .form-label::after {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+}
+
+.form-text:required:invalid,
+.form-text:focus:invalid {
+  -moz-box-shadow: none;
 }

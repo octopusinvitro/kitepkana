@@ -32,6 +32,10 @@ class BooksController < ApplicationController
     end
   end
 
+  def show
+    @book = Book.find(book_id)
+  end
+
   private
 
   def book_params
