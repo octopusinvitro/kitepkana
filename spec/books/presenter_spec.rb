@@ -1,7 +1,7 @@
 require "rails_helper"
-require "book_presenter"
+require "books/presenter"
 
-RSpec.describe BookPresenter do
+RSpec.describe Books::Presenter do
   it "has an id" do
     book = Book.new
     presenter = described_class.new(book)

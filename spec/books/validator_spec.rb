@@ -1,9 +1,9 @@
 require "rails_helper"
-require "book_validator"
+require "books/validator"
 
-RSpec.describe BookValidator do
+RSpec.describe Books::Validator do
   def validation_of(book)
-    BookValidator.validate(book)
+    Books::Validator.validate(book)
   end
 
   let(:invalid_book) {Book.new}

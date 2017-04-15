@@ -1,7 +1,7 @@
 require "rails_helper"
-require "book_updater"
+require "books/updater"
 
-RSpec.describe BookUpdater do
+RSpec.describe Books::Updater do
   let(:book) { Book.create(title: "the title", filename: "filename.pdf") }
 
   describe "successful update" do
