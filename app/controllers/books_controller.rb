@@ -3,7 +3,7 @@ require "book_presenter"
 
 class BooksController < ApplicationController
   def index
-    @books = Book.all.to_a
+    @books = Book.all.map { |book| BookPresenter.new(book) }
   end
 
   def new
