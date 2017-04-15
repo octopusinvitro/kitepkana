@@ -1,10 +1,10 @@
-require "book_creator"
-require "book_presenter"
-require "book_updater"
+require "books/creator"
+require "books/presenter"
+require "books/updater"
 
 class BooksController < ApplicationController
   def index
-    @books = Book.all.map { |book| BookPresenter.new(book) }
+    @books = Book.all.map { |book| Books::Presenter.new(book) }
   end
 
   def new
@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    creation = BookCreator.execute(book_params)
+    creation = Books::Creator.execute(book_params)
     creation.successful? ? announce(creation, "created") : repeat(creation, :new)
   end
 
@@ -21,12 +21,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    update = BookUpdater.execute(book_id, book_params)
+    update = Books::Updater.execute(book_id, book_params)
     update.successful? ? announce(update, "updated") : repeat(update, :edit)
   end
 
   def show
-    @book = BookPresenter.new(Book.find(book_id))
+    @book = Books::Presenter.new(Book.find(book_id))
   end
 
   private

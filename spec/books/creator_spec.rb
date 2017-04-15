@@ -1,7 +1,7 @@
 require "rails_helper"
-require "book_creator"
+require "books/creator"
 
-RSpec.describe BookCreator do
+RSpec.describe Books::Creator do
   describe "successful creation" do
     let(:book_attributes) { {
       title:    "the title",

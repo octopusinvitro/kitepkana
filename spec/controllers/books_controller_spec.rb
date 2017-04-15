@@ -1,5 +1,5 @@
 require "rails_helper"
-require "book_presenter"
+require "books/presenter"
 
 RSpec.describe BooksController do
   describe "#index" do
@@ -18,7 +18,7 @@ RSpec.describe BooksController do
     it "wraps the books in a presenter" do
       book = Book.create!(title: "title", filename: "filename.pdf")
       get :index
-      expect(assigns(:books).first).to be_a(BookPresenter)
+      expect(assigns(:books).first).to be_a(Books::Presenter)
     end
   end
 
@@ -139,7 +139,7 @@ RSpec.describe BooksController do
 
     it "wraps a book in a presenter" do
       get :show, id: book.id
-      expect(assigns(:book)).to be_a(BookPresenter)
+      expect(assigns(:book)).to be_a(Books::Presenter)
     end
   end
 end
