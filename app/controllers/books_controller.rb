@@ -1,3 +1,5 @@
+require "book_validator"
+
 class BooksController < ApplicationController
   def index
   end
@@ -8,11 +10,13 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    validation = validate(@book)
 
-    if @book.save
+    if validation.okay?
+      @book.save
       redirect_to root_path, notice: "Successfully created book #{@book.title}."
     else
-      flash.now[:alert] = @book.errors.full_messages
+      flash.now[:alert] = validation.messages
       render :new
     end
   end
@@ -23,11 +27,14 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(book_id)
+    @book.assign_attributes(book_params)
+    validation = validate(@book)
 
-    if @book.update_attributes(book_params)
+    if validation.okay?
+      @book.save
       redirect_to root_path, notice: "Successfully updated book #{@book.title}."
     else
-      flash.now[:alert] = @book.errors.full_messages
+      flash.now[:alert] = validation.messages
       render :edit
     end
   end
@@ -44,5 +51,9 @@ class BooksController < ApplicationController
 
   def book_id
     params[:id]
+  end
+
+  def validate(book)
+    BookValidator.validate(book)
   end
 end
