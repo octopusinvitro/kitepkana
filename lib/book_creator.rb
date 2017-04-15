@@ -1,4 +1,5 @@
 require "book_validator"
+require "result"
 
 class BookCreator
   def self.execute(attributes)
@@ -33,18 +34,5 @@ class BookCreator
 
   def validation
     @validation ||= BookValidator.validate(book)
-  end
-
-  class Result
-    attr_reader :book, :messages
-
-    def initialize(book, messages)
-      @book = book
-      @messages = messages
-    end
-
-    def successful?
-      messages.empty?
-    end
   end
 end
