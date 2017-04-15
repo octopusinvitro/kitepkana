@@ -6,6 +6,11 @@ RSpec.describe BooksController do
       get :index
       expect(response).to render_template("index")
     end
+
+    it "has a list of books" do
+      get :index
+      expect(assigns(:books)).to be_an(Array)
+    end
   end
 
   describe "#new" do

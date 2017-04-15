@@ -3,6 +3,7 @@ require "book_presenter"
 
 class BooksController < ApplicationController
   def index
+    @books = Book.all.to_a
   end
 
   def new
