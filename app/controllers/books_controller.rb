@@ -1,5 +1,6 @@
-require "book_validator"
+require "book_creator"
 require "book_presenter"
+require "book_validator"
 
 class BooksController < ApplicationController
   def index
@@ -11,16 +12,8 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    validation = validate(@book)
-
-    if validation.okay?
-      @book.save
-      redirect_to root_path, notice: "Successfully created book #{@book.title}."
-    else
-      flash.now[:alert] = validation.messages
-      render :new
-    end
+    creation = BookCreator.execute(book_params)
+    creation.successful? ? announce(creation) : repeat(creation)
   end
 
   def edit
@@ -57,5 +50,15 @@ class BooksController < ApplicationController
 
   def validate(book)
     BookValidator.validate(book)
+  end
+
+  def announce(creation)
+    redirect_to root_path, notice: "Successfully created book #{creation.book.title}."
+  end
+
+  def repeat(creation)
+    @book = creation.book
+    flash.now[:alert] = creation.messages
+    render :new
   end
 end
