@@ -30,6 +30,8 @@ RSpec.describe BooksController do
   end
 
   describe "#create" do
+    render_views
+
     def create_book(attributes = {})
       post :create, book: {
         "title":    "new book",
@@ -49,14 +51,12 @@ RSpec.describe BooksController do
 
     it "creates a new book" do
       create_book
-      newest_book = Book.last
-      expect(newest_book.title).to eq("new book")
-      expect(newest_book.filename).to eq("filename.pdf")
+      expect(Book).to exist
     end
 
     it "does not create a new book with validation errors" do
       create_book(title: "")
-      expect(Book.all).to be_empty
+      expect(Book).not_to exist
     end
 
     it "re-renders the form again on errors" do
