@@ -13,8 +13,4 @@ RSpec.describe Book do
     expect(book.title).to eq(title)
     expect(book.filename).to eq(filename)
   end
-
-  it "needs a title" do
-    expect { create_book(title: nil) }.to raise_error(ActiveRecord::RecordInvalid)
-  end
 end
