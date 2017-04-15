@@ -85,7 +85,9 @@ RSpec.describe BooksController do
   end
 
   describe "#update" do
-    let(:book) {Book.create!(title: "old title", filename: 'filename.pdf')}
+    render_views
+
+    let(:book) { Book.create!(title: "old title", filename: 'filename.pdf') }
 
     def update_book(attributes = {})
       patch :update, id: book.id, book: {
@@ -108,18 +110,12 @@ RSpec.describe BooksController do
       update_book(id: book.id,
                   title: "updated title",
                   filename: "updated-filename.pdf")
-      book.reload
-      expect(book.title).to eq("updated title")
-      expect(book.filename).to eq("updated-filename.pdf")
+      expect(book.reload.title).to eq("updated title")
     end
 
     it "does not update a book with validation errors" do
-      old_title = book.title
-      update_book(id: book.id,
-                  title: nil,
-                  filename: "irrelevant")
-      book.reload
-      expect(book.title).to eq(old_title)
+      update_book(id: book.id, title: "", filename: "irrelevant")
+      expect(book.title).not_to eq("")
     end
 
     it "re-renders the form again on errors" do
