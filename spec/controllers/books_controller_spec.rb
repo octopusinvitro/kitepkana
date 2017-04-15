@@ -126,5 +126,10 @@ RSpec.describe BooksController do
       get :show, id: book.id
       expect(response).to render_template("show")
     end
+
+    it "wraps a book in a presenter" do
+      get :show, id: book.id
+      expect(assigns(:book)).to be_a(BookPresenter)
+    end
   end
 end

@@ -1,4 +1,5 @@
 require "book_validator"
+require "book_presenter"
 
 class BooksController < ApplicationController
   def index
@@ -40,7 +41,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(book_id)
+    @book = BookPresenter.new(Book.find(book_id))
   end
 
   private
