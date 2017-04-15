@@ -1,7 +1,10 @@
 require "rails_helper"
+require "book_presenter"
 
 RSpec.describe BooksController do
   describe "#index" do
+    render_views
+
     it "renders the index template" do
       get :index
       expect(response).to render_template("index")
@@ -10,6 +13,12 @@ RSpec.describe BooksController do
     it "has a list of books" do
       get :index
       expect(assigns(:books)).to be_an(Array)
+    end
+
+    it "wraps the books in a presenter" do
+      book = Book.create!(title: "title", filename: "filename.pdf")
+      get :index
+      expect(assigns(:books).first).to be_a(BookPresenter)
     end
   end
 

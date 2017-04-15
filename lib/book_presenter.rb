@@ -3,6 +3,10 @@ class BookPresenter
     @book = book
   end
 
+  def id
+    book.id
+  end
+
   def title
     book.title.titleize
   end
