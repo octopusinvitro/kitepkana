@@ -1,5 +1,5 @@
-require "books/validator"
 require "books/result"
+require "books/validator"
 
 module Books
   class Updater
