@@ -40,3 +40,18 @@
     color: $light-color;
   }
 }
+
+.button-alert {
+  @extend %button;
+  background-color: $alert-color;
+  color: $light-color;
+
+  &:hover {
+    background-color: $alert-color-darker;
+    color: $light-color;
+  }
+}
+
+.form-link {
+  font-size: .8em;
+}

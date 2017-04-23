@@ -142,4 +142,37 @@ RSpec.describe BooksController do
       expect(assigns(:book)).to be_a(Books::Presenter)
     end
   end
+
+  describe "delete" do
+    let(:book) { Book.create!(title: "title", filename: "filename.pdf") }
+
+    it "renders the delete template" do
+      get :delete, id: book.id
+      expect(response).to render_template("delete")
+    end
+
+    it "wraps book in a presenter" do
+      get :delete, id: book.id
+      expect(assigns(:book)).to be_a(Books::Presenter)
+    end
+  end
+
+  describe "#destroy" do
+    let(:book) {Book.create!(title: "title", filename: "filename.pdf")}
+
+    it "redirects to the main page" do
+      delete :destroy, id: book.id
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "shows a success message" do
+      delete :destroy, id: book.id
+      expect(flash[:notice]).to include("title")
+    end
+
+    it "shows an error if book does not exist" do
+      delete :destroy, id: 0
+      expect(flash.now[:alert].first).to include("Book doesn't exist")
+    end
+  end
 end

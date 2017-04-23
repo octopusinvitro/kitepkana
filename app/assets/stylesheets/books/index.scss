@@ -26,37 +26,46 @@
     padding: 0;
     background-color: $light-color;
   }
+}
+
+.item-info {
+  @extend %center-vertically;
 
   h2 {
-    @extend %center-vertically;
     margin: 1.5em;
     font-size: 1.1em;
     font-weight: 500;
-
-    a {
-      color: $success-color-darker;
-      text-decoration: none;
-      border-bottom: .15em solid $success-color-darker;
-    }
+    line-height: 1.5;
   }
 
-  .button-secondary {
-    @extend %center-vertically;
-    width: 100%;
+  a {
+    color: $success-color-darker;
+    text-decoration: none;
+    border-bottom: .15em solid $success-color-darker;
   }
+}
 
-  @media screen and (min-width: 40em) {
+.item-buttons {
+  @extend %center-vertically;
+  width: 100%;
+}
+
+@media screen and (min-width: 40em) {
+  .main-list {
     li {
       display: flex;
       justify-content: space-between;
     }
+  }
 
-    h2 {
-      display: inline-block;
-    }
+  .item-buttons {
+    flex: 0 0 20%;
+    flex-direction: row;
 
-    .button-secondary {
-      flex: 0 0 10%;
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 }

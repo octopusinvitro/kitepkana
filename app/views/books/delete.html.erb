@@ -1,0 +1,10 @@
+
+<h2>Delete Book</h2>
+
+<%= form_for(@book.instance, url: destroy_book_path, method: :delete) do |form| %>
+  <p>Are you sure you want to delete this book?</p>
+  <%= form.submit "Delete book", class: "button-alert" %>
+  <%= link_to("Go back", root_path, class: "button-main form-link") %>
+<% end %>
+
+<%= render "book_info" %>

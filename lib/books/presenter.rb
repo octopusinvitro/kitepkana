@@ -4,6 +4,10 @@ module Books
       @book = book
     end
 
+    def instance
+      book
+    end
+
     def id
       book.id
     end

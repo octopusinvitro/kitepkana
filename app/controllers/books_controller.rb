@@ -1,4 +1,5 @@
 require "books/creator"
+require "books/destroyer"
 require "books/presenter"
 require "books/updater"
 
@@ -27,6 +28,15 @@ class BooksController < ApplicationController
 
   def show
     @book = Books::Presenter.new(Book.find(book_id))
+  end
+
+  def delete
+    @book = Books::Presenter.new(Book.find(book_id))
+  end
+
+  def destroy
+    destruction = Books::Destroyer.execute(book_id)
+    destruction.successful? ? announce(destruction, "deleted") : repeat(destruction, :index)
   end
 
   private
