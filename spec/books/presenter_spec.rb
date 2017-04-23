@@ -2,6 +2,12 @@ require "rails_helper"
 require "books/presenter"
 
 RSpec.describe Books::Presenter do
+  it "has an instance of the book it decorates" do
+    book = Book.new
+    presenter = described_class.new(book)
+    expect(presenter.instance).to eq(book)
+  end
+
   it "has an id" do
     book = Book.new
     presenter = described_class.new(book)
