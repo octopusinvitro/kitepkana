@@ -143,6 +143,20 @@ RSpec.describe BooksController do
     end
   end
 
+  describe "delete" do
+    let(:book) { Book.create!(title: "title", filename: "filename.pdf") }
+
+    it "renders the delete template" do
+      get :delete, id: book.id
+      expect(response).to render_template("delete")
+    end
+
+    it "wraps book in a presenter" do
+      get :delete, id: book.id
+      expect(assigns(:book)).to be_a(Books::Presenter)
+    end
+  end
+
   describe "#destroy" do
     let(:book) {Book.create!(title: "title", filename: "filename.pdf")}
 

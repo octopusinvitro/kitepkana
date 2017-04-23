@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root "books#index"
 
-  get    "/book/new"      => "books#new",     as: :new_book
-  post   "/book"          => "books#create",  as: :create_book
-  get    "/book/edit/:id" => "books#edit",    as: :edit_book
-  patch  "/book/:id"      => "books#update",  as: :update_book
-  get    "/book/:id"      => "books#show",    as: :show_book
-  delete "/book/:id"      => "books#destroy", as: :destroy_book
+  get    "/book/new"        => "books#new",     as: :new_book
+  post   "/book"            => "books#create",  as: :create_book
+  get    "/book/edit/:id"   => "books#edit",    as: :edit_book
+  patch  "/book/:id"        => "books#update",  as: :update_book
+  get    "/book/:id"        => "books#show",    as: :show_book
+  get    "/book/delete/:id" => "books#delete",  as: :delete_book
+  delete "/book/:id"        => "books#destroy", as: :destroy_book
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

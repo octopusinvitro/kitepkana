@@ -30,6 +30,10 @@ class BooksController < ApplicationController
     @book = Books::Presenter.new(Book.find(book_id))
   end
 
+  def delete
+    @book = Books::Presenter.new(Book.find(book_id))
+  end
+
   def destroy
     destruction = Books::Destroyer.execute(book_id)
     destruction.successful? ? announce(destruction, "deleted") : repeat(destruction, :index)
