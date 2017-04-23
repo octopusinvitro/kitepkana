@@ -10,6 +10,7 @@ module Books
 
     def validate
       result = Result.new
+      result << validate_existence
       result << validate_title
       result
     end
@@ -18,12 +19,16 @@ module Books
 
     attr_reader :book
 
+    def validate_existence
+      "Book doesn't exist" unless book
+    end
+
     def validate_title
       "Title can't be empty." if title_empty?
     end
 
     def title_empty?
-      book.title.blank?
+      book.title.blank? if book
     end
 
     class Result

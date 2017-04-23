@@ -24,11 +24,12 @@ RSpec.describe Books::Validator do
     let(:invalid_book) {Book.new}
 
     it "is not valid" do
+      expect(validation_of(nil)).not_to be_okay
       expect(validation_of(invalid_book)).not_to be_okay
     end
 
-    it "returns validation messages" do
-      expect(validation_of(invalid_book).messages).not_to be_empty
+    it "validates existence" do
+      expect(validation_of(nil).messages).to include("Book doesn't exist")
     end
 
     it "validates the title" do
