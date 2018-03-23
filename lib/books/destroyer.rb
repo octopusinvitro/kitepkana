@@ -8,7 +8,7 @@ module Books
     end
 
     def initialize(book_id)
-      @book_id = book_id
+      @book_id = book_id.to_s
     end
 
     def execute

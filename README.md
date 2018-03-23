@@ -55,7 +55,7 @@ chmod +x bin/*
 Run any pending migrations:
 
 ```bash
-bin/rake db:migrate RAILS_ENV=development
+bin/rake db:setup RAILS_ENV=development
 ```
 
 Set up the initial database structure and content:
@@ -90,8 +90,8 @@ bundle exec rspec
 
 ### Environment Components
 
-- Ruby 2.3.1
-- Rails 4.2.1
+- Ruby 2.5.0
+- Rails 5.0.6
 - SQLite
 
 
