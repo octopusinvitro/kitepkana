@@ -33,10 +33,12 @@ RSpec.describe BooksController do
     render_views
 
     def create_book(attributes = {})
-      post :create, book: {
-        "title":    "new book",
-        "filename": "filename.pdf"
-      }.merge(attributes)
+      post :create, params: {
+        book: {
+          "title":    "new book",
+          "filename": "filename.pdf"
+        }.merge(attributes)
+      }
     end
 
     it "redirects to book overview" do
@@ -74,12 +76,12 @@ RSpec.describe BooksController do
     let(:book) {Book.create!(title: "title", filename: 'filename.pdf')}
 
     it "renders the edit template" do
-      get :edit, id: book.id
+      get :edit, params: { id: book.id }
       expect(response).to render_template("edit")
     end
 
     it "finds the book to edit" do
-      get :edit, id: book.id
+      get :edit, params: { id: book.id }
       expect(assigns(:book)).to be_truthy
     end
   end
@@ -90,10 +92,13 @@ RSpec.describe BooksController do
     let(:book) { Book.create!(title: "old title", filename: 'filename.pdf') }
 
     def update_book(attributes = {})
-      patch :update, id: book.id, book: {
-        "title":    "title",
-        "filename": "filename"
-      }.merge(attributes)
+      patch :update, params: {
+        id: book.id,
+        book: {
+          "title":    "title",
+          "filename": "filename"
+        }.merge(attributes)
+      }
     end
 
     it "redirects to book overview" do
@@ -133,12 +138,12 @@ RSpec.describe BooksController do
     let(:book) {Book.create!(title: "title", filename: "filename.pdf")}
 
     it "renders the show template" do
-      get :show, id: book.id
+      get :show, params: { id: book.id }
       expect(response).to render_template("show")
     end
 
     it "wraps a book in a presenter" do
-      get :show, id: book.id
+      get :show, params: { id: book.id }
       expect(assigns(:book)).to be_a(Books::Presenter)
     end
   end
@@ -147,12 +152,12 @@ RSpec.describe BooksController do
     let(:book) { Book.create!(title: "title", filename: "filename.pdf") }
 
     it "renders the delete template" do
-      get :delete, id: book.id
+      get :delete, params: { id: book.id }
       expect(response).to render_template("delete")
     end
 
     it "wraps book in a presenter" do
-      get :delete, id: book.id
+      get :delete, params: { id: book.id }
       expect(assigns(:book)).to be_a(Books::Presenter)
     end
   end
@@ -161,17 +166,17 @@ RSpec.describe BooksController do
     let(:book) {Book.create!(title: "title", filename: "filename.pdf")}
 
     it "redirects to the main page" do
-      delete :destroy, id: book.id
+      delete :destroy, params: { id: book.id }
       expect(response).to redirect_to(root_path)
     end
 
     it "shows a success message" do
-      delete :destroy, id: book.id
+      delete :destroy, params: { id: book.id }
       expect(flash[:notice]).to include("title")
     end
 
     it "shows an error if book does not exist" do
-      delete :destroy, id: 0
+      delete :destroy, params: { id: 0 }
       expect(flash.now[:alert].first).to include("Book doesn't exist")
     end
   end
