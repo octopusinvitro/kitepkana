@@ -14,3 +14,6 @@ Metrics/BlockLength:
 Lint/ScriptPermission:
   Exclude:
     - 'bin/*'
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
