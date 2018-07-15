@@ -12,5 +12,14 @@
     <%= form.label(:filename, class: "form-label") %>
   </p>
 
+  <p class="form-pair">
+    <%= form.label(:language, "Language", class: "select-label") %>
+    <span class="form-select">
+      <select id="language" name="language">
+        <%= render "language_options" %>
+      </select>
+    </span>
+  </p>
+
   <%= form.submit "Create book", class: "button-main" %>
 <% end %>

@@ -1,3 +1,12 @@
+%form-font {
+  font-family: $site-font-family;
+  font-weight: 300;
+  font-size: 70.25%;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: $dark-color;
+}
+
 form {
   margin-top: 2em;
 }
@@ -21,16 +30,12 @@ form {
 }
 
 .form-label {
+  @extend %form-font;
   position: absolute;
   bottom: 0; left: 0;
   padding: 0;
   width: 100%;
   height: calc(100% - 1em);
-  color: $dark-color;
-  font-weight: 300;
-  font-size: 70.25%;
-  text-transform: uppercase;
-  letter-spacing: .2em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-touch-callout: none;
@@ -80,4 +85,34 @@ form {
 .form-text:required:invalid,
 .form-text:focus:invalid {
   -moz-box-shadow: none;
+}
+
+.select-label,
+.form-select {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.select-label {
+  @extend %form-font;
+  margin-right: 2em;
+}
+
+.form-select {
+  width: 15em;
+  margin: 1em 0;
+  overflow: hidden;
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 95% 0;
+  background-size: auto 100%;
+  border: 1px solid $dark-color;
+
+  select {
+    @extend  %form-font;
+    height: 5em;
+    width: 25em;
+    margin: 0;
+    padding: 1em; /* Small or the options won't show in IE */
+    background: transparent;
+    border: 0;
+  }
 }
