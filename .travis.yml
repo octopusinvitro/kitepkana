@@ -1,7 +1,14 @@
 language: ruby
+
+rvm:
+- 2.5.1
+
+cache: bundler
+
 install:
 - sudo apt-get install sqlite3 libsqlite3-dev
 - bundle install
-- chmod +x bin/*
-- bin/rake db:migrate RAILS_ENV=test
-script: bundle exec rspec
+- bundle exec rake db:migrate RAILS_ENV=test
+
+script:
+  - bundle exec rake
