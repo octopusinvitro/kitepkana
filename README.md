@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/octopusinvitro/kitepkana.svg?branch=master)](https://travis-ci.org/octopusinvitro/kitepkana)
 [![build status](https://gitlab.com/octopusinvitro/kitepkana/badges/master/build.svg)](https://gitlab.com/octopusinvitro/kitepkana/commits/master)
-
+[![Coverage Status](https://coveralls.io/repos/github/octopusinvitro/kitepkana/badge.svg?branch=master)](https://coveralls.io/github/octopusinvitro/kitepkana?branch=master)
+[![Dependency status](https://badges.depfu.com/badges/f3ba1a00ad804e9048da678d987fb8e0/overview.svg)](https://depfu.com/github/octopusinvitro/kitepkana?project=Bundler)
+[![Maintainability](https://api.codeclimate.com/v1/badges/34e592975d85edc09e3b/maintainability)](https://codeclimate.com/github/octopusinvitro/kitepkana/maintainability)
 
 # Readme
 
@@ -46,22 +48,10 @@ The install all the gems:
 bundle install
 ```
 
-Ensure that the files in the `bin` directory have the right permissions:
-
-```bash
-chmod +x bin/*
-```
-
 Run any pending migrations:
 
 ```bash
-bin/rake db:setup RAILS_ENV=development
-```
-
-Set up the initial database structure and content:
-
-```bash
-bundle exec rake db:setup
+bundle exec rake db:setup db:migrate RAILS_ENV=development
 ```
 
 Once that's done, start up the application:
@@ -78,20 +68,20 @@ The application should be available at [localhost:3000](http://localhost:3000) n
 Run any pending migrations:
 
 ```bash
-bin/rake db:migrate RAILS_ENV=test
+bundle exec rake db:setup db:migrate RAILS_ENV=test
 ```
 
 Then run the tests:
 
 ```bash
-bundle exec rspec
+bundle exec rake
 ```
 
 
 ### Environment Components
 
-- Ruby 2.5.0
-- Rails 5.0.6
+- Ruby
+- Rails
 - SQLite
 
 
