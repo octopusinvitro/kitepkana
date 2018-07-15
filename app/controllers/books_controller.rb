@@ -1,7 +1,9 @@
-require "books/creator"
-require "books/destroyer"
-require "books/presenter"
-require "books/updater"
+# frozen_string_literal: true
+
+require 'books/creator'
+require 'books/destroyer'
+require 'books/presenter'
+require 'books/updater'
 
 class BooksController < ApplicationController
   def index
@@ -14,7 +16,11 @@ class BooksController < ApplicationController
 
   def create
     creation = Books::Creator.execute(book_params)
-    creation.successful? ? announce(creation, "created") : repeat(creation, :new)
+    if creation.successful?
+      announce(creation, 'created')
+    else
+      repeat(creation, :new)
+    end
   end
 
   def edit
@@ -23,7 +29,7 @@ class BooksController < ApplicationController
 
   def update
     update = Books::Updater.execute(book_id, book_params)
-    update.successful? ? announce(update, "updated") : repeat(update, :edit)
+    update.successful? ? announce(update, 'updated') : repeat(update, :edit)
   end
 
   def show
@@ -36,7 +42,11 @@ class BooksController < ApplicationController
 
   def destroy
     destruction = Books::Destroyer.execute(book_id)
-    destruction.successful? ? announce(destruction, "deleted") : repeat(destruction, :index)
+    if destruction.successful?
+      announce(destruction, 'deleted')
+    else
+      repeat(destruction, :index)
+    end
   end
 
   private
@@ -50,7 +60,8 @@ class BooksController < ApplicationController
   end
 
   def announce(result, action)
-    redirect_to root_path, notice: "Successfully #{action} book #{result.book.title}."
+    notice = "Successfully #{action} book #{result.book.title}."
+    redirect_to root_path, notice: notice
   end
 
   def repeat(result, template)

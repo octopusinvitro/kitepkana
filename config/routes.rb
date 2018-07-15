@@ -1,15 +1,18 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root "books#index"
+  root 'books#index'
 
-  get    "/book/new"        => "books#new",     as: :new_book
-  post   "/book"            => "books#create",  as: :create_book
-  get    "/book/edit/:id"   => "books#edit",    as: :edit_book
-  patch  "/book/:id"        => "books#update",  as: :update_book
-  get    "/book/:id"        => "books#show",    as: :show_book
-  get    "/book/delete/:id" => "books#delete",  as: :delete_book
-  delete "/book/:id"        => "books#destroy", as: :destroy_book
+  get    '/book/new'        => 'books#new',     as: :new_book
+  post   '/book'            => 'books#create',  as: :create_book
+  get    '/book/edit/:id'   => 'books#edit',    as: :edit_book
+  patch  '/book/:id'        => 'books#update',  as: :update_book
+  get    '/book/:id'        => 'books#show',    as: :show_book
+  get    '/book/delete/:id' => 'books#delete',  as: :delete_book
+  delete '/book/:id'        => 'books#destroy', as: :destroy_book
 
-  # The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon order of creation: first created -> highest
+  # priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -21,7 +24,8 @@ Rails.application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
+  # Example resource route (maps HTTP verbs to controller actions
+  # automatically):
   #   resources :products
 
   # Example resource route with options:

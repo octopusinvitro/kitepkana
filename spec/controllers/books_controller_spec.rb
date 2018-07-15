@@ -1,181 +1,183 @@
-require "rails_helper"
-require "books/presenter"
+# frozen_string_literal: true
+
+require 'rails_helper'
+require 'books/presenter'
 
 RSpec.describe BooksController do
-  describe "#index" do
+  describe '#index' do
     render_views
 
-    it "renders the index template" do
+    it 'renders the index template' do
       get :index
-      expect(response).to render_template("index")
+      expect(response).to render_template('index')
     end
 
-    it "has a list of books" do
+    it 'has a list of books' do
       get :index
       expect(assigns(:books)).to be_an(Array)
     end
 
-    it "wraps the books in a presenter" do
-      book = Book.create!(title: "title", filename: "filename.pdf")
+    it 'wraps the books in a presenter' do
+      Book.create!(title: 'title', filename: 'filename.pdf')
       get :index
       expect(assigns(:books).first).to be_a(Books::Presenter)
     end
   end
 
-  describe "#new" do
-    it "renders the new template" do
+  describe '#new' do
+    it 'renders the new template' do
       get :new
-      expect(response).to render_template("new")
+      expect(response).to render_template('new')
     end
   end
 
-  describe "#create" do
+  describe '#create' do
     render_views
 
     def create_book(attributes = {})
       post :create, params: {
         book: {
-          "title":    "new book",
-          "filename": "filename.pdf"
+          "title":    'new book',
+          "filename": 'filename.pdf'
         }.merge(attributes)
       }
     end
 
-    it "redirects to book overview" do
+    it 'redirects to book overview' do
       create_book
       expect(response).to redirect_to(root_path)
     end
 
-    it "contains a success message" do
+    it 'contains a success message' do
       create_book
-      expect(flash[:notice]).to include("created book new book")
+      expect(flash[:notice]).to include('created book new book')
     end
 
-    it "creates a new book" do
+    it 'creates a new book' do
       create_book
       expect(Book).to exist
     end
 
-    it "does not create a new book with validation errors" do
-      create_book(title: "")
+    it 'does not create a new book with validation errors' do
+      create_book(title: '')
       expect(Book).not_to exist
     end
 
-    it "re-renders the form again on errors" do
-      create_book(title: "")
-      expect(response).to render_template("new")
+    it 're-renders the form again on errors' do
+      create_book(title: '')
+      expect(response).to render_template('new')
     end
 
-    it "contains an error message for invalid books" do
-      create_book(title: "")
-      expect(flash.now[:alert].first).to include("Title")
+    it 'contains an error message for invalid books' do
+      create_book(title: '')
+      expect(flash.now[:alert].first).to include('Title')
     end
   end
 
-  describe "#edit" do
-    let(:book) {Book.create!(title: "title", filename: 'filename.pdf')}
+  describe '#edit' do
+    let(:book) { Book.create!(title: 'title', filename: 'filename.pdf') }
 
-    it "renders the edit template" do
+    it 'renders the edit template' do
       get :edit, params: { id: book.id }
-      expect(response).to render_template("edit")
+      expect(response).to render_template('edit')
     end
 
-    it "finds the book to edit" do
+    it 'finds the book to edit' do
       get :edit, params: { id: book.id }
       expect(assigns(:book)).to be_truthy
     end
   end
 
-  describe "#update" do
+  describe '#update' do
     render_views
 
-    let(:book) { Book.create!(title: "old title", filename: 'filename.pdf') }
+    let(:book) { Book.create!(title: 'old title', filename: 'filename.pdf') }
 
     def update_book(attributes = {})
       patch :update, params: {
         id: book.id,
         book: {
-          "title":    "title",
-          "filename": "filename"
+          "title":    'title',
+          "filename": 'filename'
         }.merge(attributes)
       }
     end
 
-    it "redirects to book overview" do
+    it 'redirects to book overview' do
       update_book(id: book.id)
       expect(response).to redirect_to(root_path)
     end
 
-    it "contains a success message" do
-      update_book(id: book.id, title: "new title")
-      expect(flash[:notice]).to include("updated book new title")
+    it 'contains a success message' do
+      update_book(id: book.id, title: 'new title')
+      expect(flash[:notice]).to include('updated book new title')
     end
 
-    it "updates a book" do
+    it 'updates a book' do
       update_book(id: book.id,
-                  title: "updated title",
-                  filename: "updated-filename.pdf")
-      expect(book.reload.title).to eq("updated title")
+                  title: 'updated title',
+                  filename: 'updated-filename.pdf')
+      expect(book.reload.title).to eq('updated title')
     end
 
-    it "does not update a book with validation errors" do
-      update_book(id: book.id, title: "", filename: "irrelevant")
-      expect(book.title).not_to eq("")
+    it 'does not update a book with validation errors' do
+      update_book(id: book.id, title: '', filename: 'irrelevant')
+      expect(book.title).not_to eq('')
     end
 
-    it "re-renders the form again on errors" do
-      update_book(id: book.id, title: "")
-      expect(response).to render_template("edit")
+    it 're-renders the form again on errors' do
+      update_book(id: book.id, title: '')
+      expect(response).to render_template('edit')
     end
 
-    it "contains an error message for invalid books" do
-      update_book(id: book.id, title: "")
-      expect(flash.now[:alert].first).to include("Title")
+    it 'contains an error message for invalid books' do
+      update_book(id: book.id, title: '')
+      expect(flash.now[:alert].first).to include('Title')
     end
   end
 
-  describe "#show" do
-    let(:book) {Book.create!(title: "title", filename: "filename.pdf")}
+  describe '#show' do
+    let(:book) { Book.create!(title: 'title', filename: 'filename.pdf') }
 
-    it "renders the show template" do
+    it 'renders the show template' do
       get :show, params: { id: book.id }
-      expect(response).to render_template("show")
+      expect(response).to render_template('show')
     end
 
-    it "wraps a book in a presenter" do
+    it 'wraps a book in a presenter' do
       get :show, params: { id: book.id }
       expect(assigns(:book)).to be_a(Books::Presenter)
     end
   end
 
-  describe "delete" do
-    let(:book) { Book.create!(title: "title", filename: "filename.pdf") }
+  describe 'delete' do
+    let(:book) { Book.create!(title: 'title', filename: 'filename.pdf') }
 
-    it "renders the delete template" do
+    it 'renders the delete template' do
       get :delete, params: { id: book.id }
-      expect(response).to render_template("delete")
+      expect(response).to render_template('delete')
     end
 
-    it "wraps book in a presenter" do
+    it 'wraps book in a presenter' do
       get :delete, params: { id: book.id }
       expect(assigns(:book)).to be_a(Books::Presenter)
     end
   end
 
-  describe "#destroy" do
-    let(:book) {Book.create!(title: "title", filename: "filename.pdf")}
+  describe '#destroy' do
+    let(:book) { Book.create!(title: 'title', filename: 'filename.pdf') }
 
-    it "redirects to the main page" do
+    it 'redirects to the main page' do
       delete :destroy, params: { id: book.id }
       expect(response).to redirect_to(root_path)
     end
 
-    it "shows a success message" do
+    it 'shows a success message' do
       delete :destroy, params: { id: book.id }
-      expect(flash[:notice]).to include("title")
+      expect(flash[:notice]).to include('title')
     end
 
-    it "shows an error if book does not exist" do
+    it 'shows an error if book does not exist' do
       delete :destroy, params: { id: 0 }
       expect(flash.now[:alert].first).to include("Book doesn't exist")
     end

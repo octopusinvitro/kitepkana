@@ -1,5 +1,7 @@
-require "books/result"
-require "books/validator"
+# frozen_string_literal: true
+
+require 'books/result'
+require 'books/validator'
 
 module Books
   class Creator
