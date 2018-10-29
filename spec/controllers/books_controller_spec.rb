@@ -37,7 +37,7 @@ RSpec.describe BooksController do
     def create_book(attributes = {})
       post :create, params: {
         book: {
-          "title":    'new book',
+          "title": 'new book',
           "filename": 'filename.pdf'
         }.merge(attributes)
       }
@@ -97,7 +97,7 @@ RSpec.describe BooksController do
       patch :update, params: {
         id: book.id,
         book: {
-          "title":    'title',
+          "title": 'title',
           "filename": 'filename'
         }.merge(attributes)
       }

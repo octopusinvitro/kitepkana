@@ -7,7 +7,7 @@ RSpec.describe Books::Creator do
   describe 'successful creation' do
     let(:book_attributes) do
       {
-        title:    'the title',
+        title: 'the title',
         filename: 'filename.pdf'
       }
     end
