@@ -1,8 +1,6 @@
-language: ruby
-
+dist: focal
 rvm:
-- 2.5.1
-
+- 3.0.0
 cache: bundler
 
 install:

@@ -11,7 +11,7 @@ This is a Rails app to manage my digital books. I may add my paper books as well
 ## How to use this project
 
 This is a Ruby project.
-You will need to tell your favourite Ruby version manager to set your local Ruby version to the one specified in the `.ruby-version` file.
+This is a Ruby project. Tell your Ruby version manager to set your local Ruby version to the one specified in the `Gemfile`.
 
 For example, if you are using [rbenv](https://cbednarski.com/articles/installing-ruby/):
 
@@ -57,7 +57,7 @@ bundle exec rake db:setup db:migrate RAILS_ENV=development
 Once that's done, start up the application:
 
 ```bash
-bundle exec rails s
+bundle exec rails server -u webrick
 ```
 
 The application should be available at [localhost:3000](http://localhost:3000) now.
