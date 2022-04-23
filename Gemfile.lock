@@ -103,6 +103,8 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    psych (4.0.3)
+      stringio
     racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -139,7 +141,8 @@ GEM
       thor (~> 1.0)
     rainbow (3.1.1)
     rake (13.0.6)
-    rdoc (6.3.3)
+    rdoc (6.4.0)
+      psych (>= 4.0.0)
     regexp_parser (2.3.0)
     rexml (3.2.5)
     rspec (3.11.0)
@@ -185,8 +188,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sdoc (2.3.1)
-      rdoc (>= 5.0, < 6.4.0)
+    sdoc (2.3.2)
+      rdoc (>= 5.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -200,6 +203,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stringio (3.0.1)
     sync (0.5.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
