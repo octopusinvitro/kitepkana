@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/octopusinvitro/kitepkana.svg?branch=master)](https://travis-ci.org/octopusinvitro/kitepkana)
-[![build status](https://gitlab.com/octopusinvitro/kitepkana/badges/master/build.svg)](https://gitlab.com/octopusinvitro/kitepkana/commits/master)
+[![build status](https://gitlab.com/octopusinvitro/kitepkana/badges/master/pipeline.svg)](https://gitlab.com/octopusinvitro/kitepkana/commits/master)
 [![Coverage Status](https://coveralls.io/repos/github/octopusinvitro/kitepkana/badge.svg?branch=master)](https://coveralls.io/github/octopusinvitro/kitepkana?branch=master)
 [![Dependency status](https://badges.depfu.com/badges/f3ba1a00ad804e9048da678d987fb8e0/overview.svg)](https://depfu.com/github/octopusinvitro/kitepkana?project=Bundler)
 [![Maintainability](https://api.codeclimate.com/v1/badges/34e592975d85edc09e3b/maintainability)](https://codeclimate.com/github/octopusinvitro/kitepkana/maintainability)
@@ -10,7 +9,6 @@ This is a Rails app to manage my digital books. I may add my paper books as well
 
 ## How to use this project
 
-This is a Ruby project.
 This is a Ruby project. Tell your Ruby version manager to set your local Ruby version to the one specified in the `Gemfile`.
 
 For example, if you are using [rbenv](https://cbednarski.com/articles/installing-ruby/):
@@ -42,7 +40,7 @@ This project uses Sqlite. Be sure you have it installed in your system before in
 sudo apt-get install sqlite3 libsqlite3-dev
 ```
 
-The install all the gems:
+Then install all the gems:
 
 ```bash
 bundle install
@@ -78,7 +76,7 @@ bundle exec rake
 ```
 
 
-### Environment Components
+### Dependencies
 
 - Ruby
 - Rails
